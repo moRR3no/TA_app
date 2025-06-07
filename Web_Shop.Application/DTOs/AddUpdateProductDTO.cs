@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Web_Shop.Application.DTOs
 {
-    internal class AddUpdateProductDTO
+    public class AddUpdateProductDTO
     {
+        public string Name { get; set; } = null!;
+
+        public string Description { get; set; } = null!;
+
+        public decimal Price { get; set; }
     }
 }
