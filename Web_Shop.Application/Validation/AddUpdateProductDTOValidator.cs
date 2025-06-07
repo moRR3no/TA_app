@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,11 @@ namespace Web_Shop.Application.Validation
                 .WithMessage("Należy podać cenę produktu.")
                 .GreaterThanOrEqualTo(0)
                 .WithMessage("Cena produktu nie może być wartością ujemną.");
+
+            RuleFor(request => request.Sku)
+                .NotEmpty().WithMessage("Pole 'Kod produktu (SKU)' jest wymagane i nie może być puste.")
+                .Matches("^[A-Z]{3}-[A-Z]{2}-[A-Z0-9]{4,}$")
+                .WithMessage("Pole 'Kod produktu (SKU)' musi być w formacie 'XXX-YY-ZZZZ...' (np. ELE-SM-PUL001).");
         }
 }
 }

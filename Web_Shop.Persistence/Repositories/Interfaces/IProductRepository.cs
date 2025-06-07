@@ -12,5 +12,6 @@ namespace Web_Shop.Persistence.Repositories.Interfaces {
         Task<bool> NameExistsAsync(string name);
         Task<bool> IsNameEditAllowedAsync(string name, ulong id);
         Task<Product?> GetByNameAsync(string name);
+        Task<bool> SkuExistsAsync(string sku);
     }
 }

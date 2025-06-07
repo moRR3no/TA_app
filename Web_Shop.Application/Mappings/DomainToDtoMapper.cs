@@ -37,7 +37,8 @@ namespace Web_Shop.Application.Mappings
                 IdProduct = domainProduct.IdProduct,
                 Name = domainProduct.Name,
                 Description = domainProduct.Description,
-                Price = domainProduct.Price
+                Price = domainProduct.Price,
+                Sku = domainProduct.Sku,
             };
             return getSingleProductDTO;
         }

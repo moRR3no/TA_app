@@ -12,7 +12,9 @@ using Web_Shop.Application.DTOs;
 using Web_Shop.Application.Extensions;
 using Web_Shop.Application.Helpers.PagedList;
 using Web_Shop.Application.Mappings;
+using Web_Shop.Application.Services;
 using Web_Shop.Application.Services.Interfaces;
+using Web_Shop.Persistence.UOW;
 using Web_Shop.Persistence.UOW.Interfaces;
 using WWSI_Shop.Persistence.MySQL.Model;
 
@@ -33,9 +35,9 @@ namespace Web_Shop.Application.Services
     {
         try
         {
-            if (await _unitOfWork.ProductRepository.NameExistsAsync(dto.Name))
+            if (await _unitOfWork.ProductRepository.NameExistsAsync(dto.Name) || await _unitOfWork.ProductRepository.SkuExistsAsync(dto.Sku))
             {
-                return (false, default(Product), HttpStatusCode.BadRequest, $"Name: {dto.Name} already registered.");
+                return (false, default(Product), HttpStatusCode.BadRequest, $"Name: {dto.Name} already registered. Sku id: {dto.Sku}");
             }
 
             var newEntity = dto.MapProduct();
@@ -76,5 +78,5 @@ namespace Web_Shop.Application.Services
         }
     }
 
-}
+   }
 }

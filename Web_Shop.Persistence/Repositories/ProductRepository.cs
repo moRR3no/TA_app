@@ -29,5 +29,10 @@ namespace Web_Shop.Persistence.Repositories
             return await Entities.FirstOrDefaultAsync(e => e.Name == name);
         }
 
+        public async Task<bool> SkuExistsAsync(string sku)
+        {
+            return await Entities.AnyAsync(e => e.Sku == sku);
+        }
+
     }
 }

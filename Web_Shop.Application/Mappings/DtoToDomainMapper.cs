@@ -37,7 +37,8 @@ namespace Web_Shop.Application.Mappings
             {
                 Name = dtoProduct.Name,
                 Description = dtoProduct.Description,
-                Price = dtoProduct.Price
+                Price = dtoProduct.Price,
+                Sku = dtoProduct.Sku
             };
 
             return domainProduct;

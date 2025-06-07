@@ -23,6 +23,10 @@ namespace Web_Shop.Application.Mappings.PropertiesMappings
         mapper.Property<Product>(p => p.Price)
                  .CanSort()
                  .CanFilter();
+
+        mapper.Property<Product>(p => p.Sku)
+                    .CanSort()
+                    .CanFilter();
         }
     }
 }
