@@ -8,6 +8,8 @@ namespace Web_Shop.Persistence.UOW.Interfaces
 
         IGenericRepository<T> Repository<T>() where T : class;
 
+        IProductRepository ProductRepository { get; }
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 
         Task<int> SaveAndRemoveCache(CancellationToken cancellationToken, params string[] cacheKeys);
